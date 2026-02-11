@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.eddar.chores"
+    namespace = "com.github.ioluas.eddar.chores"
     compileSdk = 34
 
     defaultConfig {

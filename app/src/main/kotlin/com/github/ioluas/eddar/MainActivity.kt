@@ -1,4 +1,4 @@
-package com.eddar
+package com.github.ioluas.eddar
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

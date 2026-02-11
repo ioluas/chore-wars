@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.eddar"
+    namespace = "com.github.ioluas.eddar"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.eddar"
+        applicationId = "com.github.ioluas.eddar"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.eddar.teams"
+    namespace = "com.github.ioluas.eddar.teams"
     compileSdk = 34
 
     defaultConfig {
