@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    namespace = "com.eddar.data"
-    compileSdk = 34
+    namespace = "com.github.ioluas.eddar.data"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26

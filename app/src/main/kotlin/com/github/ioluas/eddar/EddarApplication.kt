@@ -1,4 +1,4 @@
-package com.eddar
+package com.github.ioluas.eddar
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

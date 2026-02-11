@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    namespace = "com.eddar.domain"
-    compileSdk = 34
+    namespace = "com.github.ioluas.eddar.domain"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -28,4 +28,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
