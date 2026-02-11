@@ -7,8 +7,8 @@ plugins {
 }
 
 android {
-    namespace = "com.eddar.auth"
-    compileSdk = 34
+    namespace = "com.github.ioluas.eddar.auth"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
