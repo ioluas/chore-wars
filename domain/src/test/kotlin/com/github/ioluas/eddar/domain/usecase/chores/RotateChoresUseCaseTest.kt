@@ -7,7 +7,7 @@ import com.github.ioluas.eddar.domain.model.Team
 import com.github.ioluas.eddar.domain.repository.ChoreRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -29,7 +29,7 @@ class RotateChoresUseCaseTest {
     }
 
     @Test
-    fun `rotate chores moves assignment to next member`() = runBlocking {
+    fun `rotate chores moves assignment to next member`() = runTest {
         val useCase = RotateChoresUseCase(mockRepository)
         val team = Team("team1", "Home", "CODE", "user1", listOf("user1", "user2"))
         

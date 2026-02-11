@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.github.ioluas.eddar.teams"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
