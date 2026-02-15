@@ -24,4 +24,8 @@ data class TaskCompletion(
     val completedAt: Date = Date(),
     val difficultyScore: Int,
     val notes: String? = null
-)
+) {
+    init {
+        require(difficultyScore in 1..10) { "Difficulty score must be between 1 and 10" }
+    }
+}

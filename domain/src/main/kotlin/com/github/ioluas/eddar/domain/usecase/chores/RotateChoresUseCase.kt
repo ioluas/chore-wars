@@ -20,7 +20,12 @@ class RotateChoresUseCase @Inject constructor(
         
         chores.forEach { chore ->
             val currentIndex = team.memberIds.indexOf(chore.assignedUserId)
-            val nextIndex = (currentIndex + 1) % team.memberIds.size
+            val nextIndex = if (currentIndex == -1) {
+                // If unassigned or user left team, start with the first member
+                0
+            } else {
+                (currentIndex + 1) % team.memberIds.size
+            }
             val nextUserId = team.memberIds[nextIndex]
             
             val rotatedChore = chore.copy(assignedUserId = nextUserId)

@@ -23,6 +23,7 @@ class ChoreTest {
 
     @Test
     fun `chore creation with invalid difficulty score throws exception`() {
+        // Test upper bound
         assertThrows(IllegalArgumentException::class.java) {
             Chore(
                 id = "1",
@@ -33,6 +34,42 @@ class ChoreTest {
                 difficultyScore = 11
             )
         }
+        // Test lower bound
+        assertThrows(IllegalArgumentException::class.java) {
+            Chore(
+                id = "1",
+                teamId = "team_1",
+                name = "Vacuum",
+                description = "Vacuum",
+                frequency = ChoreFrequency.WEEKLY,
+                difficultyScore = 0
+            )
+        }
+    }
+
+    @Test
+    fun `chore creation with boundary difficulty scores succeeds`() {
+        // Test lower valid bound
+        val choreMin = Chore(
+            id = "1",
+            teamId = "team_1",
+            name = "Vacuum",
+            description = "Vacuum",
+            frequency = ChoreFrequency.WEEKLY,
+            difficultyScore = 1
+        )
+        assertEquals(1, choreMin.difficultyScore)
+
+        // Test upper valid bound
+        val choreMax = Chore(
+            id = "2",
+            teamId = "team_1",
+            name = "Vacuum",
+            description = "Vacuum",
+            frequency = ChoreFrequency.WEEKLY,
+            difficultyScore = 10
+        )
+        assertEquals(10, choreMax.difficultyScore)
     }
 
     @Test
