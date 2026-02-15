@@ -23,19 +23,6 @@ class ChoreTest {
 
     @Test
     fun `chore creation with invalid difficulty score throws exception`() {
-<<<<<<< HEAD
-        assertThrows(IllegalArgumentException::class.java) {
-            Chore(
-                id = "1",
-                teamId = "team_1",
-                name = "Vacuum",
-                description = "Vacuum",
-                frequency = ChoreFrequency.WEEKLY,
-                difficultyScore = 11
-            )
-        }
-||||||| 3ad8315
-=======
         // Test upper bound
         assertThrows(IllegalArgumentException::class.java) {
             Chore(
@@ -83,7 +70,6 @@ class ChoreTest {
             difficultyScore = 10
         )
         assertEquals(10, choreMax.difficultyScore)
->>>>>>> develop
     }
 
     @Test

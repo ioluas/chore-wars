@@ -38,9 +38,6 @@ class RotateChoresUseCaseTest {
         assertEquals(1, mockRepository.savedChores.size)
         assertEquals("user2", mockRepository.savedChores[0].assignedUserId)
     }
-<<<<<<< HEAD
-||||||| 3ad8315
-=======
 
     @Test
     fun `rotate unassigned chore assigns to first member`() = runTest {
@@ -89,5 +86,4 @@ class RotateChoresUseCaseTest {
 
         assertEquals("user1", repo.lastSaved?.assignedUserId)
     }
->>>>>>> develop
 }
