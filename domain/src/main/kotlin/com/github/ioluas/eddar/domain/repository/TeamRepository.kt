@@ -20,7 +20,7 @@ interface TeamRepository {
     /**
      * Creates a new team.
      */
-    suspend fun createTeam(team: Team)
+    suspend fun createTeam(team: Team): Result<Unit>
 
     /**
      * Joins a team using an invite code.
@@ -30,5 +30,5 @@ interface TeamRepository {
     /**
      * Leaves a team.
      */
-    suspend fun leaveTeam(userId: String, teamId: String)
+    suspend fun leaveTeam(userId: String, teamId: String): Result<Unit>
 }

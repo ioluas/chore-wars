@@ -7,6 +7,7 @@ package com.github.ioluas.eddar.domain.model
  * @property name Human-readable name of the household (e.g., "The Baker Residence").
  * @property inviteCode A unique code used by others to join this team.
  * @property ownerId The ID of the user who created the team.
+ * @property memberIds List of user IDs who are members of this team.
  */
 data class Team(
     val id: String,
