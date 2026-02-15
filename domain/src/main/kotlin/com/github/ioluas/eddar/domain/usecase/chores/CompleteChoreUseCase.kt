@@ -13,7 +13,7 @@ import javax.inject.Inject
 class CompleteChoreUseCase @Inject constructor(
     private val choreRepository: ChoreRepository
 ) {
-    suspend operator fun invoke(chore: Chore, user: User, notes: String? = null) {
+    suspend operator fun invoke(chore: Chore, user: User, notes: String? = null): TaskCompletion {
         val completion = TaskCompletion(
             id = UUID.randomUUID().toString(),
             choreId = chore.id,
@@ -25,5 +25,6 @@ class CompleteChoreUseCase @Inject constructor(
         )
         
         choreRepository.completeChore(completion)
+        return completion
     }
 }

@@ -1,6 +1,6 @@
 [versions]
-agp = "8.5.1"
-kotlin = "2.0.0"
+agp = "9.0.1"
+kotlin = "2.3.10"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -10,9 +10,10 @@ activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 room = "2.6.1"
 retrofit = "2.11.0"
-hilt = "2.51.1"
+hilt = "2.59.1"
 firebaseBom = "33.1.2"
 coroutines = "1.8.1"
+ksp = "2.3.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,4 +49,4 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

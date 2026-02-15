@@ -38,4 +38,52 @@ class RotateChoresUseCaseTest {
         assertEquals(1, mockRepository.savedChores.size)
         assertEquals("user2", mockRepository.savedChores[0].assignedUserId)
     }
+
+    @Test
+    fun `rotate unassigned chore assigns to first member`() = runTest {
+        val unassignedChore = Chore("1", "team1", "Chore 1", "", ChoreFrequency.WEEKLY, 1, null)
+        val repo = object : ChoreRepository by mockRepository {
+            var lastSaved: Chore? = null
+            override fun getTeamChores(teamId: String): Flow<List<Chore>> = flowOf(listOf(unassignedChore))
+            override suspend fun saveChore(chore: Chore) { lastSaved = chore }
+        }
+        val useCase = RotateChoresUseCase(repo)
+        val team = Team("team1", "Home", "CODE", "user1", listOf("user1", "user2"))
+
+        useCase(team)
+
+        assertEquals("user1", repo.lastSaved?.assignedUserId)
+    }
+
+    @Test
+    fun `rotate from last member wraps around to first`() = runTest {
+        val lastMemberChore = Chore("1", "team1", "Chore 1", "", ChoreFrequency.WEEKLY, 1, "user2")
+        val repo = object : ChoreRepository by mockRepository {
+            var lastSaved: Chore? = null
+            override fun getTeamChores(teamId: String): Flow<List<Chore>> = flowOf(listOf(lastMemberChore))
+            override suspend fun saveChore(chore: Chore) { lastSaved = chore }
+        }
+        val useCase = RotateChoresUseCase(repo)
+        val team = Team("team1", "Home", "CODE", "user1", listOf("user1", "user2"))
+
+        useCase(team)
+
+        assertEquals("user1", repo.lastSaved?.assignedUserId)
+    }
+
+    @Test
+    fun `rotate with single member keeps same assignment`() = runTest {
+        val chore = Chore("1", "team1", "Chore 1", "", ChoreFrequency.WEEKLY, 1, "user1")
+        val repo = object : ChoreRepository by mockRepository {
+            var lastSaved: Chore? = null
+            override fun getTeamChores(teamId: String): Flow<List<Chore>> = flowOf(listOf(chore))
+            override suspend fun saveChore(chore: Chore) { lastSaved = chore }
+        }
+        val useCase = RotateChoresUseCase(repo)
+        val team = Team("team1", "Home", "CODE", "user1", listOf("user1"))
+
+        useCase(team)
+
+        assertEquals("user1", repo.lastSaved?.assignedUserId)
+    }
 }
